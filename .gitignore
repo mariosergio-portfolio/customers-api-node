@@ -1,0 +1,17 @@
+node_modules/
+coverage/
+
+# Local runtime config
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
