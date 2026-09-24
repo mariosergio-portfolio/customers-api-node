@@ -47,6 +47,16 @@ REST API for querying customers. A Node.js port of [customers-api](https://githu
 
 Dependencies are wired in a single composition root ([src/server.js](src/server.js)) and injected into factories (`createApp`, `createCustomerService`, ...). This keeps modules free of import-time side effects, and tests can build the app with fakes.
 
+### REST API
+
+<img src="docs/README_UI_0.png" alt="README_UI_0.png" width="600">
+
+### Customers FRONT UI
+
+*The Customers case study page (from [portfolio-frontend](https://github.com/mariosergio30/portfolio-frontend)) consuming this API — search, filter, and pronounce customer names.*
+
+<img src="docs/README_UI_1.png" alt="Customers page UI" width="600">
+
 ## Features
 
 - **Customer search**: lists customers by company, with optional case-insensitive partial-text filters on `name` and `country` (combined with AND), sorted by `id` or `name`. LIKE wildcards in user input are escaped.
