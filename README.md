@@ -5,7 +5,6 @@ REST API for querying customers. A Node.js port of [customers-api](https://githu
 ## Technical Highlights
 - **Amazon Polly (text to speech)**: Neural TTS with automatic native-voice selection per language
 - **SQL partial-text search with PostgreSQL**
-- **Node.js 24 platform features**: native ESM, `node --watch`, `--env-file`, and the built-in `node:test` runner
 
 ## Architecture
 
@@ -43,6 +42,8 @@ REST API for querying customers. A Node.js port of [customers-api](https://githu
          |   (customer table)   |          |    (Neural TTS)    |
          +----------------------+          +--------------------+
 ```
+
+<img src="docs/customers-api-AWS%20Architecture%20%28AWS17%29.drawio.png" alt="Customers page UI" width="600">
 
 Dependencies are wired in a single composition root ([src/server.js](src/server.js)) and injected into factories (`createApp`, `createCustomerService`, ...). This keeps modules free of import-time side effects, and tests can build the app with fakes.
 
