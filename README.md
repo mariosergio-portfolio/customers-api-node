@@ -180,6 +180,14 @@ test/                         # node:test + supertest (no DB or AWS needed)
 
 ## GEN AI CODE MIGRATION: 
 That NODE VERSION APPLICATION was genareted based on the existing java implementation https://github.com/mariosergio-portfolio/customers-api
+#### LLM: CLAUDE OPUS 5.5
+#### ROOT FOLDER: 
+/customer-api (java version) https://github.com/mariosergio-portfolio/customers-api
+
+#### PROMPT: 
+``` 
+Generate the equivalent code for NODE language.  Output in another repository: customers-api-node.  Use  version node 24.19.0 as well as node best practices for REST API. 
+```
 
 
 ## Differences from the Spring Boot version
