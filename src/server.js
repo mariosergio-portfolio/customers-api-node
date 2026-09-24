@@ -45,7 +45,11 @@ const app = createApp({
 
 const server = app.listen(config.port, (err) => {
   if (err) {
-    logger.fatal({ err }, 'Failed to start HTTP server');
+    const hint =
+      err.code === 'EADDRINUSE'
+        ? `Port ${config.port} is already in use (another instance running?). Stop it or set a different PORT.`
+        : 'Failed to start HTTP server';
+    logger.fatal({ err }, hint);
     process.exit(1);
   }
   logger.info(
