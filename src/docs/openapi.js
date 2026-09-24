@@ -6,7 +6,7 @@ const errorResponse = (description) => ({
 export const openApiDocument = {
   openapi: '3.1.0',
   info: {
-    title: 'Customers API',
+    title: 'Customers API (NODE)',
     description: 'REST API for querying imported customers with partial text search on name and/or country',
     version: '1.0.0',
   },

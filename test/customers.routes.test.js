@@ -158,7 +158,7 @@ describe('operational endpoints', () => {
   it('serves the OpenAPI document and Swagger UI', async () => {
     const app = buildTestApp({ customerService: fakeCustomerService() });
     const res = await request(app).get('/v3/api-docs').expect(200);
-    assert.equal(res.body.info.title, 'Customers API');
+    assert.equal(res.body.info.title, 'Customers API (NODE)');
     await request(app).get('/swagger-ui.html').expect(302).expect('Location', '/swagger-ui/index.html');
 
     for (const path of ['/swagger-ui/', '/swagger-ui/index.html']) {
@@ -166,7 +166,7 @@ describe('operational endpoints', () => {
       assert.match(page.text, /swagger-ui-init\.js/, `${path} must load our spec, not the Petstore demo`);
     }
     const init = await request(app).get('/swagger-ui/swagger-ui-init.js').expect(200);
-    assert.match(init.text, /"title": "Customers API"/);
+    assert.match(init.text, /"title": "Customers API (NODE)"/);
   });
 
   it('returns a JSON 404 for unknown routes', async () => {

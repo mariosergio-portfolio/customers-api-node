@@ -57,12 +57,22 @@ export function createApp({ config, logger, customerService, checkReadiness = as
   });
 
   // Same documentation URLs as the Spring Boot (springdoc) version.
-  const swaggerPage = swaggerUi.setup(openApiDocument);
   app.get('/v3/api-docs', (req, res) => res.json(openApiDocument));
   app.get('/swagger-ui.html', (req, res) => res.redirect('/swagger-ui/index.html'));
-  // Must precede the static assets: swagger-ui-dist ships its own index.html wired to the Petstore demo.
-  app.get('/swagger-ui/index.html', swaggerPage);
-  app.use('/swagger-ui', swaggerUi.serve, swaggerPage);
+  app.get('/swagger-ui/swagger-initializer.js', (req, res) => {
+    res.set('Content-Type', 'application/javascript');
+    res.send(`window.onload = function() {
+  window.ui = SwaggerUIBundle({
+    url: '/v3/api-docs',
+    dom_id: '#swagger-ui',
+    deepLinking: true,
+    presets: [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset],
+    plugins: [SwaggerUIBundle.plugins.DownloadUrl],
+    layout: 'StandaloneLayout'
+  });
+};`);
+  });
+  app.use('/swagger-ui', swaggerUi.serve);
 
   app.use(
     '/api',
